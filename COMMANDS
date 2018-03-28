@@ -1,9 +1,9 @@
 /usr/bin/time ./build.sh -w 2
 
-docker tag hg-accion-image-default pkerpedjiev/accion
-docker push pkerpedjiev/accion
-docker tag hg-accion-image-default pkerpedjiev/accion:latest
-docker push pkerpedjiev/accion:latest
+docker tag hg-accion-image-default pkerpedjiev/higlass-develop
+docker push pkerpedjiev/higlass-develop
+docker tag hg-accion-image-default pkerpedjiev/higlass-develop:latest
+docker push pkerpedjiev/higlass-develop:latest
 
 
 
