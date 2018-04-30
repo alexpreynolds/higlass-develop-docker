@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 set -e
 
+PROJECT=$HOME/github/alexpreynolds
 STAMP='default'
 SERVER_VERSION='1.5.2'
-WEBSITE_VERSION='0.6.18'
+WEBSITE_VERSION='0.6.19'
 # LIBRARY_VERSION='0.10.19'
 
 usage() {
@@ -35,8 +36,17 @@ set -o verbose # Keep this after the usage message to reduce clutter.
 perl -pne "s/<SERVER_VERSION>/$SERVER_VERSION/g; s/<WEBSITE_VERSION>/$WEBSITE_VERSION/g; s/<LIBRARY_VERSION>/$LIBRARY_VERSION/g" \
           web-context/Dockerfile.template > web-context/Dockerfile
 
-cp ~/projects/higlass/dist/scripts/hglib.js web-context/higlass/dist/scripts/hglib.js
-cp ~/projects/higlass/dist/styles/hglib.css web-context/higlass/dist/styles/hglib.css
+if [ ! -f $PROJECT/higlass/dist/scripts/hglib.js ]
+then
+    echo "hglib.js not found -- compile per instructions"
+fi
+cp $PROJECT/higlass/dist/scripts/hglib.js web-context/higlass/dist/scripts/hglib.js
+
+if [ ! -f $PROJECT/higlass/dist/styles/hglib.css ]
+then
+    echo "hglib.css not found -- compile per instructions"
+fi
+cp $PROJECT/higlass/dist/styles/hglib.css web-context/higlass/dist/styles/hglib.css
 
 REPO=pkerpedjiev/accion
 docker pull $REPO # Defaults to "latest", but just speeds up the build, so precise version doesn't matter.
