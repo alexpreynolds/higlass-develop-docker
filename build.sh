@@ -55,5 +55,5 @@ docker build --cache-from $REPO \
              --tag hg-dev-image-$STAMP \
              web-context
 
-rm web-context/Dockerfile # Ephemeral: We want to prevent folks from editing it by mistake.
+#rm web-context/Dockerfile # Ephemeral: We want to prevent folks from editing it by mistake.
 

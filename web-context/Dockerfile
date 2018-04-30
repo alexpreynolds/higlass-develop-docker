@@ -1,0 +1,111 @@
+FROM continuumio/miniconda3:4.3.14
+
+# NOTE: Versions have been pinned everywhere. These are the latest versions at the moment, because
+# I want to ensure predictable behavior, but I don't know of any problems with higher versions:
+# It would be good to update these over time.
+
+# "pip install clodius" complained about missing gcc,
+# and "apt-get install gcc" failed and suggested apt-get update.
+# (Was having some trouble with installs, so split it up for granular caching.)
+RUN apt-get update && apt-get install -y \
+        gcc=4:4.9.2-2 \
+        nginx=1.6.2-5+deb8u5 \
+        supervisor=3.0r1-1 \
+        unzip=6.0-16+deb8u2 \
+        uwsgi-plugin-python3 \
+        zlib1g-dev=1:1.2.8.dfsg-2+b1 \
+        libcurl4-openssl-dev \
+        g++ \
+        vim \
+        build-essential \
+        libssl-dev \
+        libpng-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Keep big dependencies which are unlikely to change near the top of this file.
+RUN conda install --yes cython==0.25.2 numpy=1.12.0
+RUN conda install --yes --channel bioconda pysam htslib=1.3.2
+RUN pip install uwsgi==2.0.14
+
+
+# Setup home directory
+RUN groupadd -r higlass && useradd -r -g higlass higlass
+WORKDIR /home/higlass
+RUN chown higlass:higlass .
+USER higlass
+
+
+# Setup server
+# Most dependencies should come from a cached layer, even before we checkout:
+# The idea is that you want to be able to release small updates to the code,
+# without having to refetch all dependencies.
+USER root
+RUN pip install pyBigWig
+RUN pip install clodius==0.7.2
+# This is *not* tagged: The idea here is *not* to bust the cache on every minor version.
+RUN wget https://raw.githubusercontent.com/hms-dbmi/higlass-server/master/requirements.txt
+RUN pip install -r requirements.txt
+# bump
+
+WORKDIR /home/higlass/projects
+RUN chown higlass:higlass .
+USER higlass
+RUN git clone --depth 1 https://github.com/hms-dbmi/higlass-server.git --branch v1.5.2
+USER root
+
+WORKDIR /home/higlass/projects/higlass-server
+RUN python manage.py collectstatic --noinput -c
+
+WORKDIR /home/higlass/projects
+RUN pip install -r higlass-server/requirements.txt
+USER higlass
+
+# Setup website (includes client js)
+ENV WEBSITE_REPO higlass-website
+RUN wget https://github.com/hms-dbmi/$WEBSITE_REPO/releases/download/v0.6.19/dist.zip
+RUN unzip dist.zip -d higlass-website
+
+RUN pwd
+
+COPY higlass/dist/scripts/hglib.js higlass-website/assets/scripts-third-party
+COPY higlass/dist/styles/hglib.css higlass-website/assets/styles-third-party
+
+RUN ( echo "SERVER_VERSION: 1.5.2"; \
+      echo "WEBSITE_VERSION: 0.6.19"; \
+      echo "LIBRARY_VERSION: develop"; \
+      ) \
+    > higlass-website/version.txt
+
+
+# Setup supervisord and nginx
+USER root
+
+COPY nginx.conf /etc/nginx/
+COPY sites-enabled/* /etc/nginx/sites-enabled/
+
+COPY uwsgi_params higlass-server/
+COPY default-viewconf-fixture.xml higlass-server/
+
+COPY supervisord.conf .
+COPY uwsgi.ini .
+# Helper scripts
+COPY *.sh ./
+
+
+RUN rm /etc/nginx/sites-*/default && grep 'listen' /etc/nginx/sites-*/*
+# Without this, two config files are trying to grab port 80:
+# nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)
+
+
+EXPOSE 80
+
+ENV HIGLASS_SERVER_BASE_DIR /data
+VOLUME /data
+
+ARG WORKERS
+ENV WORKERS ${WORKERS}
+RUN echo "WORKERS: $WORKERS"
+
+# TODO: Needs to write to logs, but running as root is risky
+# Given as list so that an extra shell does not need to be started.
+CMD ["supervisord", "-n"]
