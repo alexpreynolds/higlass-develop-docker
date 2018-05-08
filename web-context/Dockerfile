@@ -50,7 +50,7 @@ RUN pip install -r requirements.txt
 WORKDIR /home/higlass/projects
 RUN chown higlass:higlass .
 USER higlass
-RUN git clone --depth 1 https://github.com/hms-dbmi/higlass-server.git --branch v1.5.2
+RUN git clone --depth 1 https://github.com/hms-dbmi/higlass-server.git --branch v1.6.0
 USER root
 
 WORKDIR /home/higlass/projects/higlass-server
@@ -62,7 +62,7 @@ USER higlass
 
 # Setup website (includes client js)
 ENV WEBSITE_REPO higlass-website
-RUN wget https://github.com/hms-dbmi/$WEBSITE_REPO/releases/download/v0.6.19/dist.zip
+RUN wget https://github.com/hms-dbmi/$WEBSITE_REPO/releases/download/v0.6.21/dist.zip
 RUN unzip dist.zip -d higlass-website
 
 RUN pwd
@@ -70,8 +70,8 @@ RUN pwd
 COPY higlass/dist/scripts/hglib.js higlass-website/assets/scripts-third-party
 COPY higlass/dist/styles/hglib.css higlass-website/assets/styles-third-party
 
-RUN ( echo "SERVER_VERSION: 1.5.2"; \
-      echo "WEBSITE_VERSION: 0.6.19"; \
+RUN ( echo "SERVER_VERSION: 1.6.0"; \
+      echo "WEBSITE_VERSION: 0.6.21"; \
       echo "LIBRARY_VERSION: develop"; \
       ) \
     > higlass-website/version.txt
