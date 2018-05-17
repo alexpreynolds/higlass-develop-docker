@@ -24,6 +24,7 @@ RUN apt-get update && apt-get install -y \
 
 # Keep big dependencies which are unlikely to change near the top of this file.
 RUN conda install --yes cython==0.25.2 numpy=1.12.0
+RUN conda install --yes --channel anaconda h5py
 RUN conda install --yes --channel bioconda pysam htslib=1.3.2
 RUN pip install uwsgi==2.0.14
 
