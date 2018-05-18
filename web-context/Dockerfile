@@ -63,7 +63,7 @@ USER higlass
 
 # Setup website (includes client js)
 ENV WEBSITE_REPO higlass-website
-RUN wget https://github.com/hms-dbmi/$WEBSITE_REPO/releases/download/v0.6.21/dist.zip
+RUN wget https://github.com/hms-dbmi/$WEBSITE_REPO/releases/download/v0.6.22/dist.zip
 RUN unzip dist.zip -d higlass-website
 
 RUN pwd
@@ -72,7 +72,7 @@ COPY higlass/dist/scripts/hglib.js higlass-website/assets/scripts-third-party
 COPY higlass/dist/styles/hglib.css higlass-website/assets/styles-third-party
 
 RUN ( echo "SERVER_VERSION: 1.6.0"; \
-      echo "WEBSITE_VERSION: 0.6.21"; \
+      echo "WEBSITE_VERSION: 0.6.22"; \
       echo "LIBRARY_VERSION: develop"; \
       ) \
     > higlass-website/version.txt
