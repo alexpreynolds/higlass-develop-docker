@@ -10,7 +10,7 @@ FROM continuumio/miniconda3:4.3.14
 RUN apt-get update && apt-get install -y \
         gcc=4:4.9.2-2 \
         nginx=1.6.2-5+deb8u5 \
-        supervisor=3.0r1-1+deb8u1 \
+        supervisor=3.0r1-1 \
         unzip=6.0-16+deb8u2 \
         uwsgi-plugin-python3 \
         zlib1g-dev=1:1.2.8.dfsg-2+b1 \
@@ -24,7 +24,6 @@ RUN apt-get update && apt-get install -y \
 
 # Keep big dependencies which are unlikely to change near the top of this file.
 RUN conda install --yes cython==0.25.2 numpy=1.12.0
-RUN conda install --yes --channel anaconda h5py
 RUN conda install --yes --channel bioconda pysam htslib=1.3.2
 RUN pip install uwsgi==2.0.14
 
@@ -42,16 +41,18 @@ USER higlass
 # without having to refetch all dependencies.
 USER root
 RUN pip install pyBigWig
-RUN pip install clodius==0.7.2
+RUN pip install clodius==0.9.1
 # This is *not* tagged: The idea here is *not* to bust the cache on every minor version.
 RUN wget https://raw.githubusercontent.com/hms-dbmi/higlass-server/master/requirements.txt
 RUN pip install -r requirements.txt
+
 # bump
+RUN pip install hgtiles==0.2.2
 
 WORKDIR /home/higlass/projects
 RUN chown higlass:higlass .
 USER higlass
-RUN git clone --depth 1 https://github.com/hms-dbmi/higlass-server.git --branch v1.6.0
+RUN git clone --depth 1 https://github.com/hms-dbmi/higlass-server.git --branch v1.6.3
 USER root
 
 WORKDIR /home/higlass/projects/higlass-server
@@ -63,17 +64,38 @@ USER higlass
 
 # Setup website (includes client js)
 ENV WEBSITE_REPO higlass-website
-RUN wget https://github.com/hms-dbmi/$WEBSITE_REPO/releases/download/v0.6.22/dist.zip
+RUN wget https://github.com/hms-dbmi/$WEBSITE_REPO/releases/download/v0.6.25/dist.zip
 RUN unzip dist.zip -d higlass-website
 
 RUN pwd
 
-COPY higlass/dist/scripts/hglib.js higlass-website/assets/scripts-third-party
-COPY higlass/dist/styles/hglib.css higlass-website/assets/styles-third-party
+RUN sed -i -e s#assets/styles-third-party/hglib.css#https://unpkg.com/higlass@1.0.0-alpha.12/dist/styles/hglib.css#g higlass-website/index.html;
+RUN sed -i -e s#assets/styles-third-party/hglib.css#https://unpkg.com/higlass@1.0.0-alpha.12/dist/styles/hglib.css#g higlass-website/app/index.html;
+RUN sed -i -e s#assets/styles-third-party/hglib.css#https://unpkg.com/higlass@1.0.0-alpha.12/dist/styles/hglib.css#g higlass-website/demo.html;
+RUN sed -i -e s#assets/styles-third-party/hglib.css#https://unpkg.com/higlass@1.0.0-alpha.12/dist/styles/hglib.css#g higlass-website/test_demo.html;
 
-RUN ( echo "SERVER_VERSION: 1.6.0"; \
-      echo "WEBSITE_VERSION: 0.6.22"; \
-      echo "LIBRARY_VERSION: develop"; \
+RUN sed -i -e s#assets/scripts-third-party/hglib.js#https://unpkg.com/higlass@1.0.0-alpha.12/dist/scripts/hglib.js#g higlass-website/index.html;
+RUN sed -i -e s#assets/scripts-third-party/hglib.js#https://unpkg.com/higlass@1.0.0-alpha.12/dist/scripts/hglib.js#g higlass-website/app/index.html;
+RUN sed -i -e s#assets/scripts-third-party/hglib.js#https://unpkg.com/higlass@1.0.0-alpha.12/dist/scripts/hglib.js#g higlass-website/demo.html;
+RUN sed -i -e s#assets/scripts-third-party/hglib.js#https://unpkg.com/higlass@1.0.0-alpha.12/dist/scripts/hglib.js#g higlass-website/test_demo.html;
+
+RUN sed -i -e s#assets/scripts-third-party/higlass-multivec.js#https://unpkg.com/higlass-multivec@0.1.10/dist/higlass-multivec.js#g higlass-website/index.html;
+RUN sed -i -e s#assets/scripts-third-party/higlass-multivec.js#https://unpkg.com/higlass-multivec@0.1.10/dist/higlass-multivec.js#g higlass-website/app/index.html;
+RUN sed -i -e s#assets/scripts-third-party/higlass-multivec.js#https://unpkg.com/higlass-multivec@0.1.10/dist/higlass-multivec.js#g higlass-website/demo.html;
+RUN sed -i -e s#assets/scripts-third-party/higlass-multivec.js#https://unpkg.com/higlass-multivec@0.1.10/dist/higlass-multivec.js#g higlass-website/test_demo.html;
+
+RUN sed -i -e s#assets/scripts-third-party/higlass-time-interval-track.js#https://unpkg.com/higlass-time-interval-track@0.1.8/dist/higlass-time-interval-track.js#g higlass-website/index.html;
+RUN sed -i -e s#assets/scripts-third-party/higlass-time-interval-track.js#https://unpkg.com/higlass-time-interval-track@0.1.8/dist/higlass-time-interval-track.js#g higlass-website/app/index.html;
+RUN sed -i -e s#assets/scripts-third-party/higlass-time-interval-track.js#https://unpkg.com/higlass-time-interval-track@0.1.8/dist/higlass-time-interval-track.js#g higlass-website/demo.html;
+RUN sed -i -e s#assets/scripts-third-party/higlass-time-interval-track.js#https://unpkg.com/higlass-time-interval-track@0.1.8/dist/higlass-time-interval-track.js#g higlass-website/test_demo.html;
+
+RUN ( echo "SERVER_VERSION: 1.6.3"; \
+      echo "WEBSITE_VERSION: 0.6.25"; \
+      echo "LIBRARY_VERSION: 1.0.0-alpha.12"; \
+      echo "MULTIVEC_VERSION: 0.1.10"; \
+      echo "HGTILES_VERSION: 0.2.2"; \
+      echo "CLODIUS_VERSION: 0.9.1"; \
+      echo "TIME_INTERVAL_TRACK_VERSION: 0.1.8"; \
       ) \
     > higlass-website/version.txt
 

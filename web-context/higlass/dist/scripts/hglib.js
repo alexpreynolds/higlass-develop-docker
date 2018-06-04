@@ -4156,7 +4156,7 @@ function point() {
 }
 
 // EXTERNAL MODULE: ../node_modules/d3-interpolate/index.js + 21 modules
-var d3_interpolate = __webpack_require__(26);
+var d3_interpolate = __webpack_require__(27);
 
 // CONCATENATED MODULE: ../node_modules/d3-scale/src/constant.js
 /* harmony default export */ var constant = (function(x) {
@@ -6260,6 +6260,12 @@ exports.default = function () {
 
 /***/ }),
 /* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(307), __esModule: true };
+
+/***/ }),
+/* 27 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6898,15 +6904,15 @@ var cubehelixLong = cubehelix_cubehelix(nogamma);
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(28);
+var anObject = __webpack_require__(29);
 var IE8_DOM_DEFINE = __webpack_require__(105);
 var toPrimitive = __webpack_require__(91);
 var dP = Object.defineProperty;
 
-exports.f = __webpack_require__(30) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+exports.f = __webpack_require__(31) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
   anObject(O);
   P = toPrimitive(P, true);
   anObject(Attributes);
@@ -6920,10 +6926,10 @@ exports.f = __webpack_require__(30) ? Object.defineProperty : function definePro
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(29);
+var isObject = __webpack_require__(30);
 module.exports = function (it) {
   if (!isObject(it)) throw TypeError(it + ' is not an object!');
   return it;
@@ -6931,7 +6937,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports) {
 
 module.exports = function (it) {
@@ -6940,7 +6946,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Thank's IE8 for his funny defineProperty
@@ -6948,12 +6954,6 @@ module.exports = !__webpack_require__(46)(function () {
   return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
 });
 
-
-/***/ }),
-/* 31 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(307), __esModule: true };
 
 /***/ }),
 /* 32 */
@@ -6965,9 +6965,9 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_32__;
 /* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var dP = __webpack_require__(27);
+var dP = __webpack_require__(28);
 var createDesc = __webpack_require__(53);
-module.exports = __webpack_require__(30) ? function (object, key, value) {
+module.exports = __webpack_require__(31) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
   object[key] = value;
@@ -8592,7 +8592,7 @@ module.exports = function (it) {
 /* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var def = __webpack_require__(27).f;
+var def = __webpack_require__(28).f;
 var has = __webpack_require__(36);
 var TAG = __webpack_require__(18)('toStringTag');
 
@@ -8641,7 +8641,7 @@ var _toConsumableArray2 = __webpack_require__(39);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
-var _keys = __webpack_require__(31);
+var _keys = __webpack_require__(26);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -9929,7 +9929,7 @@ var d3_dispatch = __webpack_require__(96);
 var d3_drag = __webpack_require__(160);
 
 // EXTERNAL MODULE: ../node_modules/d3-interpolate/index.js + 21 modules
-var d3_interpolate = __webpack_require__(26);
+var d3_interpolate = __webpack_require__(27);
 
 // EXTERNAL MODULE: ../node_modules/d3-selection/index.js + 49 modules
 var d3_selection = __webpack_require__(12);
@@ -11028,7 +11028,7 @@ module.exports = true;
 /* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(29);
+var isObject = __webpack_require__(30);
 var document = __webpack_require__(20).document;
 // typeof document.createElement is 'object' in old IE
 var is = isObject(document) && isObject(document.createElement);
@@ -11042,7 +11042,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject = __webpack_require__(28);
+var anObject = __webpack_require__(29);
 var dPs = __webpack_require__(133);
 var enumBugKeys = __webpack_require__(79);
 var IE_PROTO = __webpack_require__(64)('IE_PROTO');
@@ -11561,7 +11561,7 @@ module.exports = { "default": __webpack_require__(290), __esModule: true };
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = __webpack_require__(29);
+var isObject = __webpack_require__(30);
 // instead of the ES6 spec version, we didn't implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function (it, S) {
@@ -11593,7 +11593,7 @@ module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
 var ctx = __webpack_require__(40);
 var call = __webpack_require__(183);
 var isArrayIter = __webpack_require__(184);
-var anObject = __webpack_require__(28);
+var anObject = __webpack_require__(29);
 var toLength = __webpack_require__(77);
 var getIterFn = __webpack_require__(94);
 var BREAK = {};
@@ -12458,6 +12458,7 @@ var HeatmapTiledPixiTrack = function (_TiledPixiTrack) {
 
     _this.is2d = true;
     _this.animate = animate;
+    _this.mirrorTiles = true;
 
     _this.onTrackOptionsChanged = onTrackOptionsChanged;
 
@@ -13360,7 +13361,7 @@ var HeatmapTiledPixiTrack = function (_TiledPixiTrack) {
           }
 
           _this5.renderingTiles['delete'](tile.tileId);
-        }, synchronous);
+        }, synchronous, this.mirrorTiles && !tile.mirrored && tile.tileData.tilePos[0] == tile.tileData.tilePos[1]);
       }
 
       return renderTile;
@@ -13530,14 +13531,13 @@ var HeatmapTiledPixiTrack = function (_TiledPixiTrack) {
      * @param  {Array}  xTiles  X positions of tiles
      * @param  {Array}  yTiles  Y positions of tiles
      * @param  {Array}  zoomLevel  Current zoom level
-     * @param  {Array}  mirrorTiles  If `true` tiles are mirrored
      * @return  {Array}  List of tile IDs
      */
 
   }, {
     key: 'tilesToId',
     value: function () {
-      function tilesToId(xTiles, yTiles, zoomLevel, mirrorTiles) {
+      function tilesToId(xTiles, yTiles, zoomLevel) {
         var rows = xTiles;
         var cols = yTiles;
         var dataTransform = this.options.dataTransform || 'default';
@@ -13548,7 +13548,7 @@ var HeatmapTiledPixiTrack = function (_TiledPixiTrack) {
         // calculate the ids of the tiles that should be visible
         for (var i = 0; i < rows.length; i++) {
           for (var j = 0; j < cols.length; j++) {
-            if (mirrorTiles) {
+            if (this.mirrorTiles) {
               if (rows[i] >= cols[j]) {
                 // if we're in the upper triangular part of the matrix, then we need
                 // to load a mirrored tile
@@ -13577,8 +13577,6 @@ var HeatmapTiledPixiTrack = function (_TiledPixiTrack) {
     key: 'calculateVisibleTiles',
     value: function () {
       function calculateVisibleTiles() {
-        var mirrorTiles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
-
         // if we don't know anything about this dataset, no point
         // in trying to get tiles
         if (!this.tilesetInfo) {
@@ -13603,7 +13601,7 @@ var HeatmapTiledPixiTrack = function (_TiledPixiTrack) {
           this.yTiles = _services.tileProxy.calculateTiles(this.zoomLevel, this._yScale, this.tilesetInfo.min_pos[1], this.tilesetInfo.max_pos[1], this.tilesetInfo.max_zoom, this.tilesetInfo.max_width);
         }
 
-        this.setVisibleTiles(this.tilesToId(this.xTiles, this.yTiles, this.zoomLevel, mirrorTiles));
+        this.setVisibleTiles(this.tilesToId(this.xTiles, this.yTiles, this.zoomLevel, this.mirrorTiles));
       }
 
       return calculateVisibleTiles;
@@ -14581,7 +14579,7 @@ var tsvFormatRows = tsv.formatRows;
 /* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = !__webpack_require__(30) && !__webpack_require__(46)(function () {
+module.exports = !__webpack_require__(31) && !__webpack_require__(46)(function () {
   return Object.defineProperty(__webpack_require__(75)('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
@@ -14998,6 +14996,8 @@ function maxNonZero(data) {
 }
 
 function workerSetPix(size, data, valueScaleType, valueScaleDomain, pseudocount, colorScale) {
+  var ignoreUpperRight = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : false;
+
   /**
    * The pseudocount is generally the minimum non-zero value and is
    * used so that our log scaling doesn't lead to NaN values.
@@ -15018,6 +15018,7 @@ function workerSetPix(size, data, valueScaleType, valueScaleDomain, pseudocount,
 
   var rgbIdx = 0;
   var e = 0;
+  var tileWidth = Math.sqrt(size);
 
   savedScaled = {};
 
@@ -15026,11 +15027,16 @@ function workerSetPix(size, data, valueScaleType, valueScaleDomain, pseudocount,
       var d = data[i];
       e = d; // for debugging
 
+
       rgbIdx = 255;
 
-      //if (Math.abs(d) > epsilon) {
-      //
-      if (!isNaN(d)) {
+      // ignore the upper right portion of a tile because it's on the diagonal
+      // and its mirror will fill in that space
+      if (ignoreUpperRight && Math.floor(i / tileWidth) < i % tileWidth) {
+        rgbIdx = 255;
+      } else if (isNaN(d)) {
+        rgbIdx = 255;
+      } else {
         // values less than espilon are considered NaNs and made transparent (rgbIdx 255)
         rgbIdx = Math.max(0, Math.min(254, Math.floor(valueScale(d + pseudocount))));
       }
@@ -16410,6 +16416,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _keys = __webpack_require__(26);
+
+var _keys2 = _interopRequireDefault(_keys);
+
 var _getClassName2 = __webpack_require__(34);
 
 var _getClassName3 = _interopRequireDefault(_getClassName2);
@@ -16471,13 +16481,17 @@ var getButtonClassNames = function getButtonClassNames(props) {
 var imgConfig = void 0;
 var imgClose = void 0;
 
+var oldProps = null;
+var DragHandle = null;
+
 var TrackControl = function TrackControl(props) {
-  return _react2['default'].createElement(
-    'div',
-    {
-      className: (0, _getClassName3['default'])(getClassNames(props), _styleModuleImportMap)
-    },
-    props.isMoveable && (0, _reactSortableHoc.SortableHandle)(function () {
+  // Avoid constant recreating that button when the props didn't change.
+  // Damn React could be a little smarter here...
+  if (!props || !oldProps || (0, _keys2['default'])(props).some(function (key) {
+    return oldProps[key] !== props[key];
+  })) {
+    oldProps = props;
+    DragHandle = (0, _reactSortableHoc.SortableHandle)(function () {
       return _react2['default'].createElement(
         'svg',
         {
@@ -16486,7 +16500,15 @@ var TrackControl = function TrackControl(props) {
         },
         _react2['default'].createElement('use', { xlinkHref: '#move' })
       );
-    }),
+    });
+  }
+
+  return _react2['default'].createElement(
+    'div',
+    {
+      className: (0, _getClassName3['default'])(getClassNames(props), _styleModuleImportMap)
+    },
+    props.isMoveable && _react2['default'].createElement(DragHandle, null),
     _react2['default'].createElement(
       'svg',
       {
@@ -16592,7 +16614,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.getSeriesItems = exports.getAllTracksAndSubtracks = undefined;
 
-var _keys = __webpack_require__(31);
+var _keys = __webpack_require__(26);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -16836,11 +16858,11 @@ module.exports = function (Constructor, NAME, next) {
 /* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var dP = __webpack_require__(27);
-var anObject = __webpack_require__(28);
+var dP = __webpack_require__(28);
+var anObject = __webpack_require__(29);
 var getKeys = __webpack_require__(54);
 
-module.exports = __webpack_require__(30) ? Object.defineProperties : function defineProperties(O, Properties) {
+module.exports = __webpack_require__(31) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
   var keys = getKeys(Properties);
   var length = keys.length;
@@ -17002,9 +17024,9 @@ exports.f = __webpack_require__(18);
 /***/ (function(module, exports, __webpack_require__) {
 
 var META = __webpack_require__(65)('meta');
-var isObject = __webpack_require__(29);
+var isObject = __webpack_require__(30);
 var has = __webpack_require__(36);
-var setDesc = __webpack_require__(27).f;
+var setDesc = __webpack_require__(28).f;
 var id = 0;
 var isExtensible = Object.isExtensible || function () {
   return true;
@@ -17064,7 +17086,7 @@ var global = __webpack_require__(20);
 var core = __webpack_require__(15);
 var LIBRARY = __webpack_require__(74);
 var wksExt = __webpack_require__(141);
-var defineProperty = __webpack_require__(27).f;
+var defineProperty = __webpack_require__(28).f;
 module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
   if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty($Symbol, name, { value: wksExt.f(name) });
@@ -17090,7 +17112,7 @@ var has = __webpack_require__(36);
 var IE8_DOM_DEFINE = __webpack_require__(105);
 var gOPD = Object.getOwnPropertyDescriptor;
 
-exports.f = __webpack_require__(30) ? gOPD : function getOwnPropertyDescriptor(O, P) {
+exports.f = __webpack_require__(31) ? gOPD : function getOwnPropertyDescriptor(O, P) {
   O = toIObject(O);
   P = toPrimitive(P, true);
   if (IE8_DOM_DEFINE) try {
@@ -17113,7 +17135,7 @@ module.exports = __webpack_require__(147);
 /* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(28);
+var anObject = __webpack_require__(29);
 var get = __webpack_require__(94);
 module.exports = __webpack_require__(15).getIterator = function (it) {
   var iterFn = get(it);
@@ -18693,7 +18715,7 @@ var _toConsumableArray2 = __webpack_require__(39);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
-var _keys = __webpack_require__(31);
+var _keys = __webpack_require__(26);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -19865,7 +19887,14 @@ var _TrackArea2 = __webpack_require__(483);
 
 var _TrackArea3 = _interopRequireDefault(_TrackArea2);
 
+var _utils = __webpack_require__(6);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+var checkMousePosVsEl = function checkMousePosVsEl(x, y, el) {
+  var bBox = el.getBoundingClientRect();
+  return (0, _utils.isWithin)(x, y, bBox.left, bBox.left + bBox.width, bBox.top, bBox.top + bBox.height);
+};
 
 var MoveableTrack = function (_TrackArea) {
   (0, _inherits3['default'])(MoveableTrack, _TrackArea);
@@ -19888,9 +19917,23 @@ var MoveableTrack = function (_TrackArea) {
         return _react2['default'].createElement(
           'div',
           {
+            ref: function () {
+              function ref(r) {
+                _this2.el = r;
+              }
+
+              return ref;
+            }(),
             className: this.props.className,
             onMouseEnter: this.handleMouseEnter.bind(this),
-            onMouseLeave: this.handleMouseLeave.bind(this),
+            onMouseLeave: function () {
+              function onMouseLeave(e) {
+                if (checkMousePosVsEl(e.nativeEvent.clientX, e.nativeEvent.clientY, _this2.el)) return;
+                _this2.handleMouseLeave();
+              }
+
+              return onMouseLeave;
+            }(),
             style: {
               height: this.props.height,
               width: this.props.width
@@ -19911,11 +19954,7 @@ var MoveableTrack = function (_TrackArea) {
             uid: this.props.uid,
             width: this.props.width
           }),
-          this.props.editable && _react2['default'].createElement(
-            'div',
-            null,
-            this.getControls(this.state.controlsVisible || this.props.item.configMenuVisible)
-          )
+          this.props.editable && this.getControls(this.state.controlsVisible || this.props.item.configMenuVisible)
         );
       }
 
@@ -19951,7 +19990,7 @@ var _toConsumableArray2 = __webpack_require__(39);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
-var _keys = __webpack_require__(31);
+var _keys = __webpack_require__(26);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -22975,7 +23014,7 @@ module.exports = cloneArrayBuffer;
 /***/ (function(module, exports, __webpack_require__) {
 
 // call something on iterator step with safe closing on error
-var anObject = __webpack_require__(28);
+var anObject = __webpack_require__(29);
 module.exports = function (iterator, fn, value, entries) {
   try {
     return entries ? fn(anObject(value)[0], value[1]) : fn(value);
@@ -23007,7 +23046,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.3.20 SpeciesConstructor(O, defaultConstructor)
-var anObject = __webpack_require__(28);
+var anObject = __webpack_require__(29);
 var aFunction = __webpack_require__(63);
 var SPECIES = __webpack_require__(18)('species');
 module.exports = function (O, D) {
@@ -23124,8 +23163,8 @@ module.exports = function (exec) {
 /* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(28);
-var isObject = __webpack_require__(29);
+var anObject = __webpack_require__(29);
+var isObject = __webpack_require__(30);
 var newPromiseCapability = __webpack_require__(139);
 
 module.exports = function (C, x) {
@@ -23146,8 +23185,8 @@ module.exports = function (C, x) {
 
 var global = __webpack_require__(20);
 var core = __webpack_require__(15);
-var dP = __webpack_require__(27);
-var DESCRIPTORS = __webpack_require__(30);
+var dP = __webpack_require__(28);
+var DESCRIPTORS = __webpack_require__(31);
 var SPECIES = __webpack_require__(18)('species');
 
 module.exports = function (KEY) {
@@ -26050,7 +26089,7 @@ module.exports = { "default": __webpack_require__(332), __esModule: true };
 /* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(29);
+var isObject = __webpack_require__(30);
 module.exports = function (it, TYPE) {
   if (!isObject(it) || it._t !== TYPE) throw TypeError('Incompatible receiver, ' + TYPE + ' required!');
   return it;
@@ -27060,7 +27099,7 @@ var _maxSafeInteger = __webpack_require__(84);
 
 var _maxSafeInteger2 = _interopRequireDefault(_maxSafeInteger);
 
-var _keys = __webpack_require__(31);
+var _keys = __webpack_require__(26);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -29231,7 +29270,7 @@ function create(node, id, self) {
 });
 
 // EXTERNAL MODULE: ../node_modules/d3-interpolate/index.js + 21 modules
-var d3_interpolate = __webpack_require__(26);
+var d3_interpolate = __webpack_require__(27);
 
 // CONCATENATED MODULE: ../node_modules/d3-transition/src/transition/tween.js
 
@@ -36046,7 +36085,7 @@ var _toConsumableArray2 = __webpack_require__(39);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
-var _keys = __webpack_require__(31);
+var _keys = __webpack_require__(26);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -36307,7 +36346,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _keys = __webpack_require__(31);
+var _keys = __webpack_require__(26);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -40296,6 +40335,8 @@ var HiGlassComponent = function (_React$Component) {
     value: function () {
       function handleViewOptionsChanged(viewUid, newOptions) {
         var view = this.state.views[viewUid];
+
+        console.log('newOptions:', newOptions);
 
         if (!view) return;
 
@@ -47646,7 +47687,7 @@ var global = __webpack_require__(20);
 var ctx = __webpack_require__(40);
 var classof = __webpack_require__(80);
 var $export = __webpack_require__(17);
-var isObject = __webpack_require__(29);
+var isObject = __webpack_require__(30);
 var aFunction = __webpack_require__(63);
 var anInstance = __webpack_require__(138);
 var forOf = __webpack_require__(93);
@@ -48198,7 +48239,7 @@ module.exports = __webpack_require__(15).Symbol;
 // ECMAScript 6 symbols shim
 var global = __webpack_require__(20);
 var has = __webpack_require__(36);
-var DESCRIPTORS = __webpack_require__(30);
+var DESCRIPTORS = __webpack_require__(31);
 var $export = __webpack_require__(17);
 var redefine = __webpack_require__(106);
 var META = __webpack_require__(142).KEY;
@@ -48211,15 +48252,15 @@ var wksExt = __webpack_require__(141);
 var wksDefine = __webpack_require__(143);
 var enumKeys = __webpack_require__(302);
 var isArray = __webpack_require__(191);
-var anObject = __webpack_require__(28);
-var isObject = __webpack_require__(29);
+var anObject = __webpack_require__(29);
+var isObject = __webpack_require__(30);
 var toIObject = __webpack_require__(37);
 var toPrimitive = __webpack_require__(91);
 var createDesc = __webpack_require__(53);
 var _create = __webpack_require__(76);
 var gOPNExt = __webpack_require__(303);
 var $GOPD = __webpack_require__(145);
-var $DP = __webpack_require__(27);
+var $DP = __webpack_require__(28);
 var $keys = __webpack_require__(54);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
@@ -48507,7 +48548,7 @@ var _promise = __webpack_require__(90);
 
 var _promise2 = _interopRequireDefault(_promise);
 
-var _keys = __webpack_require__(31);
+var _keys = __webpack_require__(26);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -49100,10 +49141,13 @@ var trackInfo = exports.trackInfo = function trackInfo(server, tilesetUid, doneC
  * @param valueScaleDomain: The domain of the scale (the range is always [254,0])
  * @param colorScale: a 255 x 4 rgba array used as a color scale
  * @param synchronous: Render this tile synchronously or pass it on to the
+ * @param ignoreUpperRight: If this is a tile along the diagonal and there will be mirrored tiles present
+ *    ignore the upper right values
  * threadpool
  */
 var tileDataToPixData = exports.tileDataToPixData = function tileDataToPixData(tile, valueScaleType, valueScaleDomain, pseudocount, colorScale, finished) {
   var synchronous = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : false;
+  var ignoreUpperRight = arguments[7];
 
   var tileData = tile.tileData;
 
@@ -49130,9 +49174,8 @@ var tileDataToPixData = exports.tileDataToPixData = function tileDataToPixData(t
 
   // comment this and uncomment the code afterwards to enable threading
 
-
   if (true) {
-    var pixData = (0, _worker.workerSetPix)(tileData.dense.length, tileData.dense, valueScaleType, valueScaleDomain, pseudocount, colorScale);
+    var pixData = (0, _worker.workerSetPix)(tileData.dense.length, tileData.dense, valueScaleType, valueScaleDomain, pseudocount, colorScale, ignoreUpperRight);
 
     finished({ pixData: pixData });
   } else {
@@ -50616,7 +50659,7 @@ $export($export.S + $export.F * !__webpack_require__(190)(function (iter) { Arra
 
 "use strict";
 
-var $defineProperty = __webpack_require__(27);
+var $defineProperty = __webpack_require__(28);
 var createDesc = __webpack_require__(53);
 
 module.exports = function (object, index, value) {
@@ -50666,7 +50709,7 @@ module.exports = __webpack_require__(338)(SET, function (get) {
 
 "use strict";
 
-var dP = __webpack_require__(27).f;
+var dP = __webpack_require__(28).f;
 var create = __webpack_require__(76);
 var redefineAll = __webpack_require__(140);
 var ctx = __webpack_require__(40);
@@ -50675,7 +50718,7 @@ var forOf = __webpack_require__(93);
 var $iterDefine = __webpack_require__(73);
 var step = __webpack_require__(110);
 var setSpecies = __webpack_require__(189);
-var DESCRIPTORS = __webpack_require__(30);
+var DESCRIPTORS = __webpack_require__(31);
 var fastKey = __webpack_require__(142).fastKey;
 var validate = __webpack_require__(199);
 var SIZE = DESCRIPTORS ? '_s' : 'size';
@@ -50825,11 +50868,11 @@ var hide = __webpack_require__(33);
 var redefineAll = __webpack_require__(140);
 var forOf = __webpack_require__(93);
 var anInstance = __webpack_require__(138);
-var isObject = __webpack_require__(29);
+var isObject = __webpack_require__(30);
 var setToStringTag = __webpack_require__(56);
-var dP = __webpack_require__(27).f;
+var dP = __webpack_require__(28).f;
 var each = __webpack_require__(339)(0);
-var DESCRIPTORS = __webpack_require__(30);
+var DESCRIPTORS = __webpack_require__(31);
 
 module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
   var Base = global[NAME];
@@ -50943,7 +50986,7 @@ module.exports = function (original, length) {
 /* 341 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(29);
+var isObject = __webpack_require__(30);
 var isArray = __webpack_require__(191);
 var SPECIES = __webpack_require__(18)('species');
 
@@ -51140,7 +51183,7 @@ module.exports = function defineProperty(it, key, desc) {
 
 var $export = __webpack_require__(17);
 // 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-$export($export.S + $export.F * !__webpack_require__(30), 'Object', { defineProperty: __webpack_require__(27).f });
+$export($export.S + $export.F * !__webpack_require__(31), 'Object', { defineProperty: __webpack_require__(28).f });
 
 
 /***/ }),
@@ -51204,8 +51247,8 @@ $export($export.S, 'Object', { setPrototypeOf: __webpack_require__(362).set });
 
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
-var isObject = __webpack_require__(29);
-var anObject = __webpack_require__(28);
+var isObject = __webpack_require__(30);
+var anObject = __webpack_require__(29);
 var check = function (O, proto) {
   anObject(O);
   if (!isObject(proto) && proto !== null) throw TypeError(proto + ": can't set as prototype!");
@@ -58570,7 +58613,7 @@ var _typeof2 = __webpack_require__(82);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
-var _keys = __webpack_require__(31);
+var _keys = __webpack_require__(26);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -59131,7 +59174,7 @@ var OPTIONS_INFO = exports.OPTIONS_INFO = {
     name: 'Background Color',
     inlineOptions: {
       white: { name: 'White', value: 'white' },
-      grey: { name: 'Grey', value: 'grey' },
+      grey: { name: 'Grey', value: '#cccccc' },
       black: { name: 'Black', value: 'black' }
     }
   },
@@ -62438,7 +62481,7 @@ var _stringify = __webpack_require__(42);
 
 var _stringify2 = _interopRequireDefault(_stringify);
 
-var _keys = __webpack_require__(31);
+var _keys = __webpack_require__(26);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -64393,6 +64436,7 @@ var TiledPlot = function (_React$Component) {
           'div',
           {
             key: 'galleryTracksDiv',
+            className: 'gallery-track-container',
             style: {
               left: this.leftWidthNoGallery + this.props.horizontalMargin,
               top: this.topHeightNoGallery + this.props.verticalMargin,
@@ -65708,7 +65752,7 @@ var GalleryTracks = function (_React$Component) {
         return _react2['default'].createElement(
           'div',
           {
-            className: 'GalleryTracks-module_gallery-tracks-3tsUO'
+            className: 'gallery-tracks GalleryTracks-module_gallery-tracks-3tsUO'
           },
           this.props.tracks.map(function (track, index) {
             return _react2['default'].createElement(
@@ -65837,7 +65881,7 @@ var _toConsumableArray2 = __webpack_require__(39);
 
 var _toConsumableArray3 = _interopRequireDefault(_toConsumableArray2);
 
-var _keys = __webpack_require__(31);
+var _keys = __webpack_require__(26);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -66477,11 +66521,11 @@ var TrackRenderer = function (_React$Component) {
     key: 'setBackground',
     value: function () {
       function setBackground() {
-        var backgroundColor = this.props.viewOptions && this.props.viewOptions.backgroundColor || 'white';
-        backgroundColor = (0, _utils.colorToHex)(backgroundColor);
+        var defBgColor = (0, _services.getDarkTheme)() ? 'black' : 'white';
+        var bgColor = (0, _utils.colorToHex)(this.currentProps.viewOptions && this.currentProps.viewOptions.backgroundColor || defBgColor);
 
         this.pBackground.clear();
-        this.pBackground.beginFill(backgroundColor);
+        this.pBackground.beginFill(bgColor);
         this.pBackground.drawRect(this.xPositionOffset, this.yPositionOffset, this.currentProps.width, this.currentProps.height);
         this.pBackground.endFill();
       }
@@ -67752,7 +67796,7 @@ var d3_dispatch = __webpack_require__(96);
 var d3_drag = __webpack_require__(160);
 
 // EXTERNAL MODULE: ../node_modules/d3-interpolate/index.js + 21 modules
-var d3_interpolate = __webpack_require__(26);
+var d3_interpolate = __webpack_require__(27);
 
 // EXTERNAL MODULE: ../node_modules/d3-selection/index.js + 49 modules
 var d3_selection = __webpack_require__(12);
@@ -68452,7 +68496,7 @@ var LeftTrackModifier = function () {
     key: 'getMouseOverHtml',
     value: function () {
       function getMouseOverHtml(trackX, trackY) {
-        return this.originTrack.getMouseOverHtml(trackY, trackX);
+        return this.originalTrack.getMouseOverHtml(trackY, trackX);
       }
 
       return getMouseOverHtml;
@@ -70088,7 +70132,7 @@ var _assign = __webpack_require__(47);
 
 var _assign2 = _interopRequireDefault(_assign);
 
-var _keys = __webpack_require__(31);
+var _keys = __webpack_require__(26);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -70146,6 +70190,13 @@ var TilesetFinder = function (_React$Component) {
     _this.localTracks = _configs.TRACKS_INFO.filter(function (x) {
       return x.local && !x.hidden;
     });
+
+    _this.augmentedTracksInfo = _configs.TRACKS_INFO;
+    if (window.higlassTracksByType) {
+      (0, _keys2['default'])(window.higlassTracksByType).forEach(function (pluginTrackType) {
+        _this.augmentedTracksInfo.push(window.higlassTracksByType[pluginTrackType].config);
+      });
+    }
 
     if (props.datatype) _this.localTracks = _this.localTracks.filter(function (x) {
       return x.datatype[0] == props.datatype;
@@ -70260,13 +70311,13 @@ var TilesetFinder = function (_React$Component) {
         if (this.props.datatype) {
           datatypesQuery = 'dt=' + String(this.props.datatype);
         } else {
-          var datatypes = new _set2['default'](_configs.TRACKS_INFO.filter(function (x) {
+          var datatypes = new _set2['default']([].concat.apply([], this.augmentedTracksInfo.filter(function (x) {
             return x.datatype;
           }).filter(function (x) {
             return x.orientation == _this3.props.orientation;
           }).map(function (x) {
             return x.datatype;
-          }));
+          })));
 
           datatypesQuery = [].concat((0, _toConsumableArray3['default'])(datatypes)).map(function (x) {
             return 'dt=' + String(x);
@@ -85352,7 +85403,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _keys = __webpack_require__(31);
+var _keys = __webpack_require__(26);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -85486,7 +85537,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _keys = __webpack_require__(31);
+var _keys = __webpack_require__(26);
 
 var _keys2 = _interopRequireDefault(_keys);
 
@@ -85697,7 +85748,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _keys = __webpack_require__(31);
+var _keys = __webpack_require__(26);
 
 var _keys2 = _interopRequireDefault(_keys);
 

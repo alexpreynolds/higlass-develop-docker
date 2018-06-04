@@ -3,8 +3,8 @@ set -e
 
 PROJECT=$HOME/github/alexpreynolds
 STAMP='default'
-SERVER_VERSION='1.6.0'
-WEBSITE_VERSION='0.6.21'
+SERVER_VERSION='1.6.3'
+WEBSITE_VERSION='0.6.25'
 # LIBRARY_VERSION='0.10.19'
 
 usage() {
