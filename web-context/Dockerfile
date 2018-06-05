@@ -64,7 +64,7 @@ USER higlass
 
 # Setup website (includes client js)
 ENV WEBSITE_REPO higlass-website
-RUN wget https://github.com/hms-dbmi/$WEBSITE_REPO/releases/download/v0.6.25/dist.zip
+RUN wget https://github.com/hms-dbmi/$WEBSITE_REPO/releases/download/v0.6.26/dist.zip
 RUN unzip dist.zip -d higlass-website
 
 RUN pwd
@@ -90,7 +90,7 @@ RUN sed -i -e s#assets/scripts-third-party/higlass-time-interval-track.js#https:
 RUN sed -i -e s#assets/scripts-third-party/higlass-time-interval-track.js#https://unpkg.com/higlass-time-interval-track@0.1.8/dist/higlass-time-interval-track.js#g higlass-website/test_demo.html;
 
 RUN ( echo "SERVER_VERSION: 1.6.3"; \
-      echo "WEBSITE_VERSION: 0.6.25"; \
+      echo "WEBSITE_VERSION: 0.6.26"; \
       echo "LIBRARY_VERSION: 1.0.0-alpha.12"; \
       echo "MULTIVEC_VERSION: 0.1.10"; \
       echo "HGTILES_VERSION: 0.2.2"; \
