@@ -5,7 +5,7 @@ set -v
 # Docker image is pinned here, so that you can checkout older
 # versions of this script, and get reproducible deployments.
 DOCKER_VERSION=v0.0.18
-IMAGE=gehlenborglab/higlass:$DOCKER_VERSION
+IMAGE=higlass/higlass-docker:$DOCKER_VERSION
 STAMP=`date +"%Y-%m-%d_%H-%M-%S"`
 PORT=0
 
@@ -56,7 +56,7 @@ docker run --name $REDIS_HOST \
            --network network-$STAMP \
            --volume $VOLUME/redis-data:/data \
            --volume $SCRIPT_DIR/redis-context/redis.conf:$REDIS_CONF \
-           --detach redis:3.2.7-alpine \
+           --detach redis:5.0.3-alpine \
            redis-server $REDIS_CONF
 
 docker run --name container-$STAMP-with-redis \
@@ -69,6 +69,3 @@ docker run --name container-$STAMP-with-redis \
            --detach \
            --publish-all \
            $IMAGE
-
-# make the demo the main page
-# docker exec -it container-$STAMP-with-redis cp higlass-website/demo.html higlass-website/index.html

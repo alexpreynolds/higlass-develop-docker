@@ -44,7 +44,7 @@ USER higlass
 # without having to refetch all dependencies.
 USER root
 RUN pip install pyBigWig
-RUN pip install clodius==<CLODIUS_VERSION>
+RUN pip install clodius==0.10.4
 # This is *not* tagged: The idea here is *not* to bust the cache on every minor version.
 RUN wget https://raw.githubusercontent.com/higlass/higlass-server/master/requirements.txt
 RUN pip install -r requirements.txt
@@ -52,7 +52,7 @@ RUN pip install -r requirements.txt
 WORKDIR /home/higlass/projects
 RUN chown higlass:higlass .
 USER higlass
-RUN git clone --depth 1 https://github.com/hms-dbmi/higlass-server.git --branch v<SERVER_VERSION>
+RUN git clone --depth 1 https://github.com/hms-dbmi/higlass-server.git --branch v1.10.2
 RUN git clone https://github.com/vishnubob/wait-for-it.git
 USER root
 
@@ -65,30 +65,30 @@ USER higlass
 
 # Setup application (includes client js)
 ENV HIPILER_REPO hipiler
-RUN wget -O hipiler.zip https://github.com/flekschas/$HIPILER_REPO/releases/download/v<HIPILER_VERSION>/build.zip
+RUN wget -O hipiler.zip https://github.com/flekschas/$HIPILER_REPO/releases/download/v1.3.1/build.zip
 RUN unzip hipiler.zip -d hipiler
 
 ENV WEB_APP_REPO higlass-app
-RUN wget -O higlass-app.zip https://github.com/hms-dbmi/$WEB_APP_REPO/releases/download/v<WEB_APP_VERSION>/build.zip
+RUN wget -O higlass-app.zip https://github.com/hms-dbmi/$WEB_APP_REPO/releases/download/v1.1.0/build.zip
 RUN unzip higlass-app.zip -d higlass-app
 # CHANGE THE NEXT LINE TO AFTER UPDATING HGLIB TO v1.3:
-# RUN wget -O higlass-app/hglib.min.js https://unpkg.com/higlass@<LIBRARY_VERSION>/dist/hglib.min.js
-RUN wget -O higlass-app/hglib.min.js https://unpkg.com/higlass@<LIBRARY_VERSION>/dist/hglib.js
-RUN wget -O higlass-app/hglib.min.css https://unpkg.com/higlass@<LIBRARY_VERSION>/dist/hglib.css
+# RUN wget -O higlass-app/hglib.min.js https://unpkg.com/higlass@1.5.3/dist/hglib.min.js
+RUN wget -O higlass-app/hglib.min.js https://unpkg.com/higlass@1.5.3/dist/hglib.js
+RUN wget -O higlass-app/hglib.min.css https://unpkg.com/higlass@1.5.3/dist/hglib.css
 
-RUN wget -O higlass-app/higlass-multivec.min.js https://unpkg.com/higlass-multivec@<MULTIVEC_VERSION>/dist/higlass-multivec.min.js
-RUN wget -O higlass-app/higlass-time-interval-track.min.js https://unpkg.com/higlass-time-interval-track@<TIME_INTERVAL_TRACK_VERSION>/dist/higlass-time-interval-track.min.js
+RUN wget -O higlass-app/higlass-multivec.min.js https://unpkg.com/higlass-multivec@0.2.0/dist/higlass-multivec.min.js
+RUN wget -O higlass-app/higlass-time-interval-track.min.js https://unpkg.com/higlass-time-interval-track@0.2.0-rc.2/dist/higlass-time-interval-track.min.js
 
 RUN sed -i -e 's#<script src="/hglib.min.js"></script>#<script src="/higlass-multivec.min.js"></script><script src="/hglib.min.js"></script>#' higlass-app/index.html
 RUN sed -i -e 's#<script src="/hglib.min.js"></script>#<script src="/higlass-time-interval-track.min.js"></script><script src="/hglib.min.js"></script>#' higlass-app/index.html
 
-RUN ( echo "SERVER_VERSION: <SERVER_VERSION>"; \
-      echo "WEB_APP_VERSION: <WEB_APP_VERSION>"; \
-      echo "LIBRARY_VERSION: <LIBRARY_VERSION>"; \
-      echo "HIPILER_VERSION: <HIPILER_VERSION>"; \
-      echo "MULTIVEC_VERSION: <MULTIVEC_VERSION>"; \
-      echo "CLODIUS_VERSION: <CLODIUS_VERSION>"; \
-      echo "TIME_INTERVAL_TRACK_VERSION: <TIME_INTERVAL_TRACK_VERSION>"; \
+RUN ( echo "SERVER_VERSION: 1.10.2"; \
+      echo "WEB_APP_VERSION: 1.1.0"; \
+      echo "LIBRARY_VERSION: 1.5.3"; \
+      echo "HIPILER_VERSION: 1.3.1"; \
+      echo "MULTIVEC_VERSION: 0.2.0"; \
+      echo "CLODIUS_VERSION: 0.10.4"; \
+      echo "TIME_INTERVAL_TRACK_VERSION: 0.2.0-rc.2"; \
       ) \
     > higlass-app/version.txt
 
